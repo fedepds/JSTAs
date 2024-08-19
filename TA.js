@@ -127,7 +127,7 @@ function handleConvertToFahrenheit() {
 //Determinación de Año Bisiesto
 
 // Función para determinar si un año es bisiesto
-function leapYears(año) {
+function anobisiesto(año) {
     if ((año % 4 === 0 && año % 100 !== 0) || año % 400 === 0) {
         return true;
     } else {
@@ -138,15 +138,14 @@ function leapYears(año) {
 // Función para manejar el evento de determinar si un año es bisiesto
 function handleIsLeapYear() {
     const año = parseInt(document.getElementById('año').value, 10);
-    const resultContainer = document.getElementById('resultYear');
-    if (leapYears(año)) {
+    const resultContainer = document.getElementById('bisiesto');
+    if (anobisiesto(año)) {
         resultContainer.textContent = 'El año es bisiesto';
     }
     else {
         resultContainer.textContent = 'El año no es bisiesto';
     }
 }
-
 //Generación y Búsqueda de Datos
 
 //Generación de Contraseñas:
