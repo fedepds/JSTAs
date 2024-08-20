@@ -2,7 +2,7 @@
 
 // Función para repetir una cadena de texto un número determinado de veces
 function repeatString(texto, repeticiones) {
-    const container = document.getElementById('container');
+    const container = document.getElementById('parte1');
     container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos elementos
     for (let i = 0; i < repeticiones; i++) {
         const p = document.createElement('p');
@@ -44,7 +44,7 @@ function removeFromArray(arreglo, item) {
     if (index !== -1) {
         arreglo.splice(index, 1);
     }
-    console.log(arreglo);
+    return arreglo;
 }
 
 // Función para obtener los nombres de los libros de un arreglo
@@ -53,7 +53,9 @@ function getFromArray(books) {
     for (i in books) {
         aux.push(i.name)
     }
-    return aux;
+    const container = document.getElementById('resultbook');
+    const h = document.createElement('titulos');
+    h.textContent = aux;
 }
 
 //Filtrado y transformacion:
@@ -69,6 +71,33 @@ function getOdds(nums) {
         p.style.fontSize = '16px';
         container.appendChild(p);
     });
+}
+
+const duplicates = (nums) => {
+    const duplicatesMap = {};
+    let count = 0;
+    let duplicateValue = null;
+
+    nums.forEach(num => {
+        if (duplicatesMap[num]) {
+            duplicatesMap[num]++;
+            if (duplicatesMap[num] === 2) {
+                count++;
+                duplicateValue = num;
+            }
+        } else {
+            duplicatesMap[num] = 1;
+        }
+    });
+
+    const container = document.getElementById('container');
+    const h4 = document.createElement('h4');
+    h4.textContent = `Valor duplicado: ${duplicateValue}`;
+    container.appendChild(h4);
+
+    const p = document.createElement('p');
+    p.textContent = `Cantidad de veces duplicado: ${count}`;
+    container.appendChild(p);
 }
 
 
@@ -146,6 +175,17 @@ function handleIsLeapYear() {
         resultContainer.textContent = 'El año no es bisiesto';
     }
 }
+
+
+// Suma de Elementos de un Arreglo
+function getSum(nums) {
+    const sum = nums.reduce((acc, num) => acc + num, 0);
+    return sum;
+}
+const handleGetSum = () => {
+
+}
+
 //Generación y Búsqueda de Datos
 
 //Generación de Contraseñas:
@@ -160,7 +200,17 @@ function generatePassword(length) {
     }
     return password;
 }
+const handleGenerarContrasena =()=>{
+    const contrasena = generatePassword(8);
+    const resultContainer = document.getElementById('contrasena'); 
+    resultContainer.textContent = `La contraseña generada es: ${contrasena}`;
+} 
 
 //Búsqueda del Más Viejo
+
+const findTheOldest = (people) => {
+
+
+}
 
 console.log(getFromArray([{ name: "Libro 1", description: "Soy description 1" }, { name: "Libro 2", description: "Soy description 2" }]));
