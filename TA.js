@@ -20,9 +20,11 @@ function handleRepeatString() {
 
 // Función para invertir una cadena de texto
 const bn =  document.getElementById("botonreverse");
-function reverseString(texto) {
-    const textoInvertido = texto.split('').reverse().join('');
-    const p = document.createElement('p');
+function reverseString(texto) 
+{   
+    const texto1 = document.getElementById('textoInvertir').value;
+    const textoInvertido = texto1.split('').reverse().join('');
+    const p = document.getElementById('salidaRepeat')
     p.innerHTML = textoInvertido;
 }
 bn.addEventListener("click", reverseString);
@@ -161,10 +163,9 @@ function sumAll(a, b) {
     for (let i = a; i <= b; i++) {
         sum += i;
     }
-    const container = document.getElementById('container');
-    const p = document.createElement('p');
-    p.textContent = `La suma de todos los números entre ${a} y ${b} es: ${sum}`;
-    container.appendChild(p);
+    const container = document.getElementById('resultsum');
+   
+    container.innerHTML = `La suma de todos los números entre ${a} y ${b} es: ${sum}`;
 }
 
 // Función para manejar el evento de calcular la suma de un rango de números
