@@ -19,17 +19,19 @@ function handleRepeatString() {
 }
 
 // Función para invertir una cadena de texto
+const bn =  document.getElementById("botonreverse");
 function reverseString(texto) {
-    const container = document.getElementById('container');
     const textoInvertido = texto.split('').reverse().join('');
     const p = document.createElement('p');
-    p.textContent = textoInvertido;
-    container.appendChild(p);
+    p.innerHTML = textoInvertido;
 }
+bn.addEventListener("click", reverseString);
+
 
 // Función para manejar el evento de invertir una cadena de texto
 function handleReverseString() {
     const texto = document.getElementById('textoInvertir').value;
+    console.log(texto);
     reverseString(texto);
 }
 
