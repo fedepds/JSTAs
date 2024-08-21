@@ -35,6 +35,36 @@ function handleReverseString() {
 
 //Procesamiento de Arreglos:
 
+function removeFromArray(arreglo, item) {
+    const index = arreglo.indexOf(item)
+    if(index !== -1){
+        arreglo.splice(index,1)
+    }
+    console.log(arreglo);
+}
+console.log(removeFromArray([1,2,3,4,5,6,7,8,9],2));
+
+
+function getTheTitles(libros) {
+  const titulos = libros.map(libro => libro.title);
+  const contenedor = document.getElementById("ContendeorDeH1");
+  titulos.forEach(titulo => {
+    const h1 = document.createElement("h1");
+    h1.textContent = titulo;
+    contenedor.appendChild(h1);
+  });
+}
+
+function mostrarTitulos() {
+  const libros = [
+    { title: "Harry Potter", autor: "J.K. Rowling" },
+    { title: "Game of Thrones", autor: "George R.R. Martin" },
+    { title: "Fire and Blood", autor: "George R.R. Martin" }
+  ];
+
+  getTheTitles(libros);
+}
+
 // Arreglo de libros
 const books = [{ name: "Libro 1", description: "Soy description 1" }, { name: "Libro 2", description: "Soy description 2" }];
 
@@ -62,43 +92,62 @@ function getFromArray(books) {
 
 // Función para obtener los números impares de un arreglo
 function getOdds(nums) {
-    const oddNumbers = nums.filter(num => num % 2 !== 0);
-    const container = document.getElementById('container');
-    oddNumbers.forEach(num => {
-        const p = document.createElement('p');
-        p.textContent = num;
+    const elementosArray = elementosInput.split(',').map(elemento => elemento.trim());
+    const aux = [];
+    elementosArray.forEach(elemento => {
+        if (elemento % 2 !== 0) {
+            aux.push(elemento);
+        }   
+    });
+    const p = document.createElement('p');
+
+    aux.forEach(number => {
+        
+        p.textContent = number;
         p.style.color = 'violet';
         p.style.fontSize = '16px';
         container.appendChild(p);
     });
 }
+function handleGetOdds() {
+    const elementosInput = document.getElementById('inputOdds').value;
+    getOdds(elementosInput);
+}
 
-const duplicates = (nums) => {
-    const duplicatesMap = {};
-    let count = 0;
-    let duplicateValue = null;
 
+function duplicates(nums) {
+    const countMap = {};
     nums.forEach(num => {
-        if (duplicatesMap[num]) {
-            duplicatesMap[num]++;
-            if (duplicatesMap[num] === 2) {
-                count++;
-                duplicateValue = num;
-            }
-        } else {
-            duplicatesMap[num] = 1;
-        }
+        countMap[num] = (countMap[num] || 0) + 1;
     });
 
-    const container = document.getElementById('container');
-    const h4 = document.createElement('h4');
-    h4.textContent = `Valor duplicado: ${duplicateValue}`;
-    container.appendChild(h4);
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.innerHTML = '';  // Limpiar el contenido previo
 
-    const p = document.createElement('p');
-    p.textContent = `Cantidad de veces duplicado: ${count}`;
-    container.appendChild(p);
+    let duplicados = 0;
+    for (const num in countMap) {
+        if (countMap[num] > 1) {
+            duplicados++;
+            resultadoDiv.innerHTML += `<h4>Valor duplicado: ${num}</h4>`;
+            resultadoDiv.innerHTML += `<p>Se repite: ${countMap[num]} veces</p>`;
+        }
+    }
+
+    // Si no se encontraron duplicados, mostrar un mensaje
+    if (duplicados === 0) {
+        resultadoDiv.innerHTML = `<h4>No hay elementos duplicados</h4>`;
+    }
 }
+
+function procesarDuplicados() {
+    const input = document.getElementById('inputNumeros').value;
+    
+    // Convertir la cadena de texto en un array de números, eliminando espacios adicionales
+    const nums = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+    duplicates(nums);
+}
+
 
 
 //Operaciones Matemáticas y Funciones de Conversión
@@ -207,10 +256,29 @@ const handleGenerarContrasena =()=>{
 } 
 
 //Búsqueda del Más Viejo
-
-const findTheOldest = (people) => {
-
-
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
 }
 
-console.log(getFromArray([{ name: "Libro 1", description: "Soy description 1" }, { name: "Libro 2", description: "Soy description 2" }]));
+const people = [
+    { name: "John Doe", age: 25 },
+    { name: "Jane Smith", age: 30 },
+    { name: "Bob Johnson", age: 40 }
+];
+function findTheOldest(people) {
+    let oldestPerson = people[0];
+    for (let i = 1; i < people.length; i++) {
+        if (people[i].age > oldestPerson.age) {
+            oldestPerson = people[i];
+        }
+    }
+    return oldestPerson;
+}
+const handleFindTheOldest = () => {
+    const oldestPerson = findTheOldest(people);
+    const resultContainer = document.getElementById('oldest');
+    resultContainer.textContent = `La persona más vieja es: ${oldestPerson.name}`;
+}
