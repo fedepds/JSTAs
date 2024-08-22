@@ -18,18 +18,18 @@
     <div id="parte1"></div>
     <br><br>
     <br><br>
-    
+
 
     <h3>Prueba de reverseString </h3>
     <input type="text" id="textoInvertir" placeholder="Texto a invertir">
     <button id="botonreverse">Invertir Texto</button>
     <p id="salidaRepeat"></p>
-    
+
 
     <br><br>
     <!--procesamiento de Arreglos-->
     <button onclick="mostrarTitulos()">Mostrar Títulos</button>
-  <div id="ContendeorDeH1"></div>
+    <div id="ContendeorDeH1"></div>
 
 
     <br><br>
@@ -37,28 +37,29 @@
     <!--Filtrado y Transformación-->
     <h1>Filtrado y Transformación</h1>
 
-    <h3>función getOdds(arreglar)</h3>
+    <h3>función getOdds</h3>
     <input type="text" id="inputOdds" placeholder="Ingresa elementos separados por comas">
-    <button onclick="getOdds()">Procesar</button>
+    <button onclick="handleGetOdds()">Procesar</button>
+    <p id="returnodds"></p>
     <br><br>
     <br><br>
     <h3>función Duplicados</h3>
 
 
-        <!-- Input para que el usuario ingrese los números separados por comas -->
-        <input type="text" id="inputNumeros" placeholder="Ingresa números separados por comas">
-    
-        <!-- Botón para ejecutar la función -->
-        <button onclick="procesarDuplicados()">Contar Duplicados</button>
-        
-        <!-- Contenedor donde se mostrarán los resultados -->
-        <div id="resultado"></div>
+    <!-- Input para que el usuario ingrese los números separados por comas -->
+    <input type="text" id="inputNumeros" placeholder="Ingresa números separados por comas">
+
+    <!-- Botón para ejecutar la función -->
+    <button onclick="procesarDuplicados()">Contar Duplicados</button>
+
+    <!-- Contenedor donde se mostrarán los resultados -->
+    <div id="resultado"></div>
 
 
 
     <br><br>
     <br><br>
-    
+
     <h1>Operaciones Matemáticas y Funciones de Conversión</h1>
     <label for="a">Número A:</label>
     <input type="number" id="a" name="a">
@@ -104,17 +105,17 @@
     <br><br>
     <br><br>
     <!--Persona mas vijea-->
-    <h1>Persona más Vieja(input)</h1>
+    <h1>Persona más Vieja</h1>
     <p>John Doe años 25, Jane Smith años 30, Bob Johnson años 40</p>
 
     <button onclick="handleFindTheOldest()">Persona más vieja</button>
     <p id="oldest"></p>
 
 
-    
-    
 
-    
+
+
+
 
 
     <script defer src="TA.js"></script>

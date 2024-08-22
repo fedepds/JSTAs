@@ -96,17 +96,15 @@ function getFromArray(books) {
 
 // Función para obtener los números impares de un arreglo
 function getOdds(nums) {
-    const elementosArray = elementosInput.split(',').map(elemento => elemento.trim());
     const aux = [];
-    elementosArray.forEach(elemento => {
+    nums.forEach(elemento => {
         if (elemento % 2 !== 0) {
             aux.push(elemento);
         }   
     });
-    const p = document.createElement('p');
-
+    const container = document.getElementById('returnodds');
     aux.forEach(number => {
-        
+        const p = document.createElement('p');
         p.textContent = number;
         p.style.color = 'violet';
         p.style.fontSize = '16px';
@@ -115,7 +113,8 @@ function getOdds(nums) {
 }
 function handleGetOdds() {
     const elementosInput = document.getElementById('inputOdds').value;
-    getOdds(elementosInput);
+    const elementosArray = elementosInput.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+    getOdds(elementosArray);
 }
 
 
